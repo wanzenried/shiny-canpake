@@ -5,20 +5,16 @@ class KeyboardPlayer {
   // _Position paramater is taken as a p5.Vector. Defaults to the middle of the canvas
   // _speed paramater is taken as a float. Defaults to 0.5
 
-  // ******************************* To be implemented later **************************************
-  // **********************************************************************************************
-  // _doubleTapDelay parameter is taken as an integer in milliseconds. Defaults to 500 milliseconds
-  // **********************************************************************************************
+
 
   // direction (Btn) parameters is taken as keycodes or the number asociated to said key (key codes can be found at https://keycode.info). Defaults to the arrow keys
   //
 
-  constructor(_position = createVector(width / 2, height / 2), _speed = 0.5, _upBtn = 38/*, _doubleTapDelay = 500*/, _leftBtn = 37, _rightBtn = 39, _downBtn = 40) {
-    this.position = _position;
-    this.speed = _speed;
-    // this.doubleTapDelay = _doubleTapDelay;
-    this.directionBtn = [_upBtn, _leftBtn, _rightBtn, _downBtn];
-
+  constructor(position = createVector(width / 2, height / 2), speed = 0.5, upBtn = 38, leftBtn = 37, rightBtn = 39, downBtn = 40) {
+    this.position = position;
+    this.speed = speed;
+    this.directionBtn = [upBtn, leftBtn, rightBtn, downBtn];
+    this.onGround = false;
   }
 
   update() {
@@ -30,12 +26,12 @@ class KeyboardPlayer {
 
     // Check if the left button is pressed
     if (keyIsDown(this.directionBtn[1])) {
-
+      this.position.x -= this.speed * deltaTime;
     }
 
     // Check if the right button is pressed
     if (keyIsDown(this.directionBtn[2])) {
-
+      this.position.x += this.speed * deltaTime;
     }
 
     // Check if the down button is pressed
@@ -43,6 +39,9 @@ class KeyboardPlayer {
 
     }
 
+    this.position.y += (this.onGround) ? 0 : gravity  *deltaTime;
+
+      return this;
   }
 
   show() {
@@ -51,7 +50,9 @@ class KeyboardPlayer {
     fill(0, 255, 0);
     circle(this.position.x, this.position.y, 20);
 
+    return this;
   }
+
 
 
 }
