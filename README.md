@@ -1,9 +1,6 @@
-# shiny-canpake
-this is the readme file for this repo  
-it will soon contain information on the project
+# shiny-canpake  - the project firstly about learning github, secondly about making a super mario lookalike #
 
-Title: shiny-canpake  
-Description: Creates a shiny pancake - without the copyright issues of pancakes  
-Spirit-animal: Moon Cake, the key to finalspace
+This is a project mainly focused on learning the basics of working together on Github.  
+While learning we of course want something to work on, so we have chosen to make a 2d platformer in the same style as super mario.
 
-"tilføjelse til readme"
+There is currently no expectation to end out with a finished product, we are more interested in learning about the process of working together with github insted
