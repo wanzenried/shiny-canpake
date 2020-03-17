@@ -95,8 +95,6 @@ class KeyboardPlayer {
     let left = ground.topLeftCorner.x;
     let right = ground.bottomRightCorner.x;
     let bottom = ground.bottomRightCorner.y;
-    stroke(0, 255, 0);
-    line(0, top, width, top);
     let object = {
       inside: false,
       goToY: 0,
