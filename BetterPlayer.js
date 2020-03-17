@@ -10,12 +10,13 @@ class KeyboardPlayer {
   // direction (Btn) parameters is taken as keycodes or the number asociated to said key (key codes can be found at https://keycode.info). Defaults to the arrow keys
   //
 
-  constructor(position = createVector(width / 2, height / 2), speed = 0.3, upBtn = 38, leftBtn = 37, rightBtn = 39, downBtn = 40) {
+  constructor(position = createVector(width / 2, height / 2), speed = 0.3,jumpForce = 5, upBtn = 38, leftBtn = 37, rightBtn = 39, downBtn = 40) {
     this.position = position;
     this.lastPosition = position;
     this.velocity = createVector(0, 0);
     this.acceleration = createVector(0, 0);
     this.speed = speed;
+    this.jumpForce = jumpForce;
     this.directionBtn = [upBtn, leftBtn, rightBtn, downBtn];
     this.onGround = false;
   }
@@ -27,7 +28,7 @@ class KeyboardPlayer {
     // Check if the up button is pressed
     if (keyIsDown(this.directionBtn[0]) && this.onGround) {
       this.position.y += 0.01;
-      this.velocity.add(createVector(0, -5));
+      this.velocity.add(createVector(0,-this.jumpForce));
       this.onGround = false;
     }
 
@@ -53,11 +54,12 @@ class KeyboardPlayer {
     this.position.add(this.velocity);
     this.acceleration.mult(0);
 
+    // standing on the bottom of the canvas
+
     if (this.position.y + 10 > height) {
       this.position.y = height - 10
       this.onGround = true;
       this.velocity.mult(0);
-      // this.velocity.mult(-1);
     }
 
     for (var i = 0; i < boxes.length; i++) {
