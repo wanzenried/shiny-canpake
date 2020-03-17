@@ -1,6 +1,6 @@
 // constants:
 
-let gravity = 0.1;
+let gravity;
 
 // end of constants
 
@@ -14,6 +14,10 @@ let player;
 function setup() {
   // put setup code here
   createCanvas(canvasX, canvasY);
+
+  gravity = createVector(0,0.1);
+
+
   box = new groundRect(100, 400, 300, 500);
   player = new KeyboardPlayer(createVector(150,100));
 }
