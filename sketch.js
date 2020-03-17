@@ -30,5 +30,5 @@ function draw() {
   drawGrid(10, 10, 255, 1);
   boxes[0].draw();
   boxes[1].draw();
-  player.update().show();
+  player.update().draw();
 }

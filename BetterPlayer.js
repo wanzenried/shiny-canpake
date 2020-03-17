@@ -82,7 +82,7 @@ class KeyboardPlayer {
     return this;
   }
 
-  show() {
+  draw() {
     // Add code for drawing the player here
     // Here's a green circle to get you started
     fill(0, 255, 0);
